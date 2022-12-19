@@ -40,7 +40,7 @@ def load_checkpoint_test(checkpoint_file_name, model, optimizer):
 def load_checkpoint(checkpoint_file_name, model, optimizer):
     """Loads the checkpoint into the given model and optimizer."""
     print(checkpoint_file_name)
-    checkpoint = torch.load(checkpoint_file_name)
+    checkpoint = torch.load(checkpoint_file_name, map_location=torch.device('cpu'))
     model.load_state_dict(checkpoint.state_dict())
     model.float()
     if optimizer is not None:
